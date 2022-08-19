@@ -23,7 +23,7 @@ We only show this once so if you lose this API Key, you’ll have to re-generate
 
 * Go to Targets -> General -> Frameworks, Libraries and Embedded Content and drag-drop the EnefitsSDK.xcframework here. Change Embed to Embed & Sign.
 
-* EnefitsSDK.xcFramework will be added to the Frameworks folder in the Project Navigator
+* EnefitsSDK.xcFramework will be added to the Frameworks folder in the Project Navigator.
 
 #SDK SETUP
 
