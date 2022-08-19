@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name EnefitsSDK
 import CryptoKit
 import Darwin
@@ -10,19 +10,18 @@ import Network
 import Security
 import Swift
 import UIKit
-import _Concurrency
 final public class Scrypt {
   public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, dkLen: Swift.Int, N: Swift.Int, r: Swift.Int, p: Swift.Int) throws
   final public func calculate() throws -> [Swift.UInt8]
   @objc deinit
 }
-extension EnefitsSDK.CS.BigUInt : Swift.Hashable {
+extension CS.BigUInt : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
 }
-extension EnefitsSDK.CS.BigInt : Swift.Hashable {
+extension CS.BigInt : Swift.Hashable {
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -32,16 +31,16 @@ public struct CFB : EnefitsSDK.BlockMode {
   public enum Error : Swift.Error {
     case invalidInitializationVector
     public static func == (a: EnefitsSDK.CFB.Error, b: EnefitsSDK.CFB.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum SegmentSize : Swift.Int {
     case cfb8
     case cfb128
-    public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
     public var rawValue: Swift.Int {
       get
     }
@@ -134,29 +133,29 @@ public class Enefits : EnefitsSDK.EnefitsProtocols {
   public func dismiss()
   @objc deinit
 }
-extension EnefitsSDK.CS.BigUInt : Swift.Comparable {
+extension CS.BigUInt : Swift.Comparable {
   public static func compare(_ a: EnefitsSDK.CS.BigUInt, _ b: EnefitsSDK.CS.BigUInt) -> Foundation.ComparisonResult
   public static func == (a: EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt) -> Swift.Bool
   public static func < (a: EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt) -> Swift.Bool
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public static func == (a: EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt) -> Swift.Bool
   public static func < (a: EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt) -> Swift.Bool
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public func quotientAndRemainder(dividingBy y: EnefitsSDK.CS.BigUInt) -> (quotient: EnefitsSDK.CS.BigUInt, remainder: EnefitsSDK.CS.BigUInt)
   public static func / (x: EnefitsSDK.CS.BigUInt, y: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
   public static func % (x: EnefitsSDK.CS.BigUInt, y: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
   public static func /= (x: inout EnefitsSDK.CS.BigUInt, y: EnefitsSDK.CS.BigUInt)
   public static func %= (x: inout EnefitsSDK.CS.BigUInt, y: EnefitsSDK.CS.BigUInt)
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public func quotientAndRemainder(dividingBy y: EnefitsSDK.CS.BigInt) -> (quotient: EnefitsSDK.CS.BigInt, remainder: EnefitsSDK.CS.BigInt)
   public static func / (a: EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public static func % (a: EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public func modulus(_ mod: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public static func /= (a: inout EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt)
   public static func %= (a: inout EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt)
 }
@@ -177,7 +176,7 @@ public protocol EnefitsProtocols {
   func disconnect(apiKeyString: Swift.String?, completionHandler handler: @escaping (Swift.Bool, Swift.String) -> Swift.Void)
   var isConnectedWithWallet: ((Swift.Bool?) -> ())? { get set }
 }
-extension EnefitsSDK.AES : EnefitsSDK.Cryptors {
+extension AES : EnefitsSDK.Cryptors {
   @inlinable final public func makeEncryptor() throws -> EnefitsSDK.Cryptor & EnefitsSDK.Updatable {
     let blockSize = blockMode.customBlockSize ?? AES.blockSize
     let worker = try blockMode.worker(blockSize: blockSize, cipherOperation: encrypt, encryptionOperation: encrypt)
@@ -196,7 +195,7 @@ extension EnefitsSDK.AES : EnefitsSDK.Cryptors {
     return try BlockDecryptor(blockSize: blockSize, padding: padding, worker)
   }
 }
-extension Swift.UInt32 {
+extension UInt32 {
   @_specialize(exported: false, kind: full, where T == Swift.ArraySlice<Swift.UInt8>)
   @inlinable internal init<T>(bytes: T, fromIndex index: T.Index) where T : Swift.Collection, T.Element == Swift.UInt8, T.Index == Swift.Int {
     if bytes.isEmpty {
@@ -219,17 +218,17 @@ final public class MD5 {
   final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
   @objc deinit
 }
-extension EnefitsSDK.MD5 : EnefitsSDK.Updatable {
+extension MD5 : EnefitsSDK.Updatable {
   final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
 }
 public struct CBC : EnefitsSDK.BlockMode {
   public enum Error : Swift.Error {
     case invalidInitializationVector
     public static func == (a: EnefitsSDK.CBC.Error, b: EnefitsSDK.CBC.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public let options: EnefitsSDK.BlockModeOption
   public let customBlockSize: Swift.Int?
@@ -256,15 +255,15 @@ public struct WCURL : Swift.Hashable, Swift.Codable {
   }
   public init(topic: Swift.String, version: Swift.String = "1", bridgeURL: Foundation.URL, key: Swift.String)
   public init?(_ str: Swift.String)
-  public func hash(into hasher: inout Swift.Hasher)
-  public static func == (a: EnefitsSDK.WCURL, b: EnefitsSDK.WCURL) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
   public var hashValue: Swift.Int {
     get
   }
-  public init(from decoder: Swift.Decoder) throws
+  public func hash(into hasher: inout Swift.Hasher)
+  public func encode(to encoder: Swift.Encoder) throws
+  public static func == (a: EnefitsSDK.WCURL, b: EnefitsSDK.WCURL) -> Swift.Bool
 }
-public typealias CipherOperationOnBlock = (_ block: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>?
+public typealias CipherOperationOnBlock = (Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>?
 public protocol BlockMode {
   var options: EnefitsSDK.BlockModeOption { get }
   @inlinable func worker(blockSize: Swift.Int, cipherOperation: @escaping EnefitsSDK.CipherOperationOnBlock, encryptionOperation: @escaping EnefitsSDK.CipherOperationOnBlock) throws -> EnefitsSDK.CipherModeWorker
@@ -275,20 +274,20 @@ final public class OCB : EnefitsSDK.BlockMode {
     case combined
     case detached
     public static func == (a: EnefitsSDK.OCB.Mode, b: EnefitsSDK.OCB.Mode) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   final public let options: EnefitsSDK.BlockModeOption
   public enum Error : Swift.Error {
     case invalidNonce
     case fail
     public static func == (a: EnefitsSDK.OCB.Error, b: EnefitsSDK.OCB.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   final public let customBlockSize: Swift.Int?
   final public var authenticationTag: Swift.Array<Swift.UInt8>?
@@ -304,7 +303,7 @@ final public class OCB : EnefitsSDK.BlockMode {
   public var session: EnefitsSDK.Session!
   @objc deinit
 }
-extension EnefitsSDK.EnefitsWalletConnect : EnefitsSDK.ClientDelegate {
+extension EnefitsWalletConnect : EnefitsSDK.ClientDelegate {
   public func client(_ client: EnefitsSDK.Client, didFailToConnect url: EnefitsSDK.WCURL)
   public func client(_ client: EnefitsSDK.Client, didConnect url: EnefitsSDK.WCURL)
   public func client(_ client: EnefitsSDK.Client, didConnect session: EnefitsSDK.Session)
@@ -328,10 +327,10 @@ public class Client : EnefitsSDK.WalletConnect {
     case missingWalletInfoInSession
     case sessionNotFound
     public static func == (a: EnefitsSDK.Client.ClientError, b: EnefitsSDK.Client.ClientError) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public init(delegate: EnefitsSDK.ClientDelegate, dAppInfo: EnefitsSDK.Session.DAppInfo? = nil)
   public func send(_ request: EnefitsSDK.Request, completion: EnefitsSDK.Client.RequestResponse?) throws
@@ -359,13 +358,14 @@ public class Client : EnefitsSDK.WalletConnect {
       public var address: Swift.String
       public var storageKeys: [Swift.String]
       public init(address: Swift.String, storageKeys: [Swift.String])
-      public func encode(to encoder: Swift.Encoder) throws
       public init(from decoder: Swift.Decoder) throws
+      public func encode(to encoder: Swift.Encoder) throws
     }
     public init(from: Swift.String, to: Swift.String?, data: Swift.String, gas: Swift.String?, gasPrice: Swift.String?, value: Swift.String?, nonce: Swift.String?, type: Swift.String?, accessList: [EnefitsSDK.Client.Transaction.AccessListItem]?, chainId: Swift.String?, maxPriorityFeePerGas: Swift.String?, maxFeePerGas: Swift.String?)
-    public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: Swift.Encoder) throws
   }
+  override public init()
   @objc deinit
 }
 public protocol Cryptors : AnyObject {
@@ -373,17 +373,17 @@ public protocol Cryptors : AnyObject {
   func makeDecryptor() throws -> EnefitsSDK.Cryptor & EnefitsSDK.Updatable
   static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
 }
-extension EnefitsSDK.Cryptors {
+extension Cryptors {
   public static func randomIV(_ count: Swift.Int) -> Swift.Array<Swift.UInt8>
 }
 public struct CTR {
   public enum Error : Swift.Error {
     case invalidInitializationVector
     public static func == (a: EnefitsSDK.CTR.Error, b: EnefitsSDK.CTR.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public let options: EnefitsSDK.BlockModeOption
   public let customBlockSize: Swift.Int?
@@ -397,15 +397,15 @@ public struct CTR {
   public static func decrypt(_ cipherText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>) throws -> (plainText: Swift.Array<Swift.UInt8>, success: Swift.Bool)
   @objc deinit
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public init?<T>(exactly source: T) where T : Swift.BinaryFloatingPoint
   public init<T>(_ source: T) where T : Swift.BinaryFloatingPoint
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public init?<T>(exactly source: T) where T : Swift.BinaryFloatingPoint
   public init<T>(_ source: T) where T : Swift.BinaryFloatingPoint
 }
-extension Swift.BinaryFloatingPoint where Self.RawExponent : Swift.FixedWidthInteger, Self.RawSignificand : Swift.FixedWidthInteger {
+extension BinaryFloatingPoint where Self.RawExponent : Swift.FixedWidthInteger, Self.RawSignificand : Swift.FixedWidthInteger {
   public init(_ value: EnefitsSDK.CS.BigInt)
   public init(_ value: EnefitsSDK.CS.BigUInt)
 }
@@ -414,42 +414,42 @@ final public class ChaCha20 {
     case invalidKeyOrInitializationVector
     case notSupported
     public static func == (a: EnefitsSDK.ChaCha20.Error, b: EnefitsSDK.ChaCha20.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public static let blockSize: Swift.Int
   final public let keySize: Swift.Int
   public init(key: Swift.Array<Swift.UInt8>, iv nonce: Swift.Array<Swift.UInt8>) throws
   @objc deinit
 }
-extension EnefitsSDK.ChaCha20 : EnefitsSDK.Cipher {
+extension ChaCha20 : EnefitsSDK.Cipher {
   final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
   final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
 }
-extension EnefitsSDK.ChaCha20 {
+extension ChaCha20 {
   public struct ChaChaEncryptor : EnefitsSDK.Cryptor, EnefitsSDK.Updatable {
     public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
     public func seek(to: Swift.Int) throws
   }
 }
-extension EnefitsSDK.ChaCha20 {
+extension ChaCha20 {
   public struct ChaChaDecryptor : EnefitsSDK.Cryptor, EnefitsSDK.Updatable {
     public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = true) throws -> Swift.Array<Swift.UInt8>
     public func seek(to: Swift.Int) throws
   }
 }
-extension EnefitsSDK.ChaCha20 : EnefitsSDK.Cryptors {
+extension ChaCha20 : EnefitsSDK.Cryptors {
   final public func makeEncryptor() -> EnefitsSDK.Cryptor & EnefitsSDK.Updatable
   final public func makeDecryptor() -> EnefitsSDK.Cryptor & EnefitsSDK.Updatable
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public init(_ buffer: Swift.UnsafeRawBufferPointer)
   public init(_ data: Foundation.Data)
   public func serialize() -> Foundation.Data
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public init(_ buffer: Swift.UnsafeRawBufferPointer)
   public init(_ data: Foundation.Data)
   public func serialize() -> Foundation.Data
@@ -464,16 +464,16 @@ final internal class BlockEncryptor : EnefitsSDK.Cryptor, EnefitsSDK.Updatable {
   @objc @usableFromInline
   deinit
 }
-extension EnefitsSDK.CS {
+extension CS {
   public struct BigInt : Swift.SignedInteger {
     public enum Sign {
       case plus
       case minus
       public static func == (a: EnefitsSDK.CS.BigInt.Sign, b: EnefitsSDK.CS.BigInt.Sign) -> Swift.Bool
-      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
+      public func hash(into hasher: inout Swift.Hasher)
     }
     public typealias Magnitude = EnefitsSDK.CS.BigUInt
     public typealias Word = EnefitsSDK.CS.BigUInt.Word
@@ -494,10 +494,10 @@ public struct HKDF {
     case invalidInput
     case derivedKeyTooLong
     public static func == (a: EnefitsSDK.HKDF.Error, b: EnefitsSDK.HKDF.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>? = nil, info: Swift.Array<Swift.UInt8>? = nil, keyLength: Swift.Int? = nil, variant: EnefitsSDK.HMAC.Variant = .sha2(.sha256)) throws
   public func calculate() throws -> Swift.Array<Swift.UInt8>
@@ -516,10 +516,10 @@ final public class SHA3 {
       get
     }
     public static func == (a: EnefitsSDK.SHA3.Variant, b: EnefitsSDK.SHA3.Variant) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public init(variant: EnefitsSDK.SHA3.Variant)
   @inlinable final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8> {
@@ -533,7 +533,7 @@ final public class SHA3 {
   final internal func process(block chunk: Swift.ArraySlice<Swift.UInt64>, currentHash hh: inout Swift.Array<Swift.UInt64>)
   @objc deinit
 }
-extension EnefitsSDK.SHA3 : EnefitsSDK.Updatable {
+extension SHA3 : EnefitsSDK.Updatable {
   @inlinable final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8> {
     self.accumulated += bytes
 
@@ -578,17 +578,17 @@ final public class Poly1305 : EnefitsSDK.Authenticator {
   public enum Error : Swift.Error {
     case authenticateError
     public static func == (a: EnefitsSDK.Poly1305.Error, b: EnefitsSDK.Poly1305.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public static let blockSize: Swift.Int
   public init(key: Swift.Array<Swift.UInt8>)
   final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
   @objc deinit
 }
-extension Foundation.Data {
+extension Data {
   public func checksum() -> Swift.UInt16
   public func md5() -> Foundation.Data
   public func sha1() -> Foundation.Data
@@ -604,7 +604,7 @@ extension Foundation.Data {
   public func decrypt(cipher: EnefitsSDK.Cipher) throws -> Foundation.Data
   public func authenticate(with authenticator: EnefitsSDK.Authenticator) throws -> Foundation.Data
 }
-extension Foundation.Data {
+extension Data {
   public init(hex: Swift.String)
   public var bytes: Swift.Array<Swift.UInt8> {
     get
@@ -622,21 +622,21 @@ public enum Padding : EnefitsSDK.PaddingProtocol {
   public func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
   public func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
   public static func == (a: EnefitsSDK.Padding, b: EnefitsSDK.Padding) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
-extension EnefitsSDK.PKCS5 {
+extension PKCS5 {
   public struct PBKDF2 {
     public enum Error : Swift.Error {
       case invalidInput
       case derivedKeyTooLong
       public static func == (a: EnefitsSDK.PKCS5.PBKDF2.Error, b: EnefitsSDK.PKCS5.PBKDF2.Error) -> Swift.Bool
-      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
+      public func hash(into hasher: inout Swift.Hasher)
     }
     public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil, variant: EnefitsSDK.HMAC.Variant = .sha2(.sha256)) throws
     public func calculate() throws -> Swift.Array<Swift.UInt8>
@@ -648,15 +648,15 @@ final public class AES {
     case dataPaddingRequired
     case invalidData
     public static func == (a: EnefitsSDK.AES.Error, b: EnefitsSDK.AES.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Variant : Swift.Int {
     case aes128, aes192, aes256
-    public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
     public var rawValue: Swift.Int {
       get
     }
@@ -806,11 +806,11 @@ final public class AES {
   final internal func decrypt(block: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>?
   @objc deinit
 }
-extension EnefitsSDK.AES {
+extension AES {
   @usableFromInline
   @inline(__always) final internal func F1(_ x0: Swift.UInt32, _ x1: Swift.UInt32, _ x2: Swift.UInt32, _ x3: Swift.UInt32) -> Swift.UInt32
 }
-extension EnefitsSDK.AES : EnefitsSDK.Cipher {
+extension AES : EnefitsSDK.Cipher {
   @inlinable final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8> {
     let blockSize = self.blockMode.customBlockSize ?? AES.blockSize
     let chunks = bytes.batched(by: blockSize)
@@ -941,10 +941,10 @@ open class Server : EnefitsSDK.WalletConnect {
     case missingWalletInfoInSession
     case failedToCreateSessionResponse
     public static func == (a: EnefitsSDK.Server.ServerError, b: EnefitsSDK.Server.ServerError) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public init(delegate: EnefitsSDK.ServerDelegate)
   open func register(handler: EnefitsSDK.RequestHandler)
@@ -954,6 +954,7 @@ open class Server : EnefitsSDK.WalletConnect {
   open func send(_ request: EnefitsSDK.Request)
   public func sendCreateSessionResponse(for requestId: EnefitsSDK.RequestID, session: EnefitsSDK.Session, walletInfo: EnefitsSDK.Session.WalletInfo)
   @objc deinit
+  override public init()
 }
 @available(*, renamed: "Digest")
 public typealias Hash = EnefitsSDK.Digest
@@ -973,10 +974,10 @@ public struct CCM {
     case invalidParameter
     case fail
     public static func == (a: EnefitsSDK.CCM.Error, b: EnefitsSDK.CCM.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public let options: EnefitsSDK.BlockModeOption
   public let customBlockSize: Swift.Int?
@@ -985,11 +986,11 @@ public struct CCM {
   public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
   public func worker(blockSize: Swift.Int, cipherOperation: @escaping EnefitsSDK.CipherOperationOnBlock, encryptionOperation: @escaping EnefitsSDK.CipherOperationOnBlock) throws -> EnefitsSDK.CipherModeWorker
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public static func + (a: EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
   public static func += (a: inout EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt)
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public static func + (a: EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public static func += (a: inout EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt)
 }
@@ -1004,9 +1005,9 @@ public struct Session : Swift.Codable {
     public let chainId: Swift.Int?
     public let approved: Swift.Bool?
     public init(peerId: Swift.String, peerMeta: EnefitsSDK.Session.ClientMeta, chainId: Swift.Int? = nil, approved: Swift.Bool? = nil)
-    public static func == (a: EnefitsSDK.Session.DAppInfo, b: EnefitsSDK.Session.DAppInfo) -> Swift.Bool
-    public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: Swift.Encoder) throws
+    public static func == (a: EnefitsSDK.Session.DAppInfo, b: EnefitsSDK.Session.DAppInfo) -> Swift.Bool
   }
   public struct ClientMeta : Swift.Codable, Swift.Equatable {
     public let name: Swift.String
@@ -1015,9 +1016,9 @@ public struct Session : Swift.Codable {
     public let url: Foundation.URL
     public let scheme: Swift.String?
     public init(name: Swift.String, description: Swift.String?, icons: [Foundation.URL], url: Foundation.URL, scheme: Swift.String? = nil)
-    public static func == (a: EnefitsSDK.Session.ClientMeta, b: EnefitsSDK.Session.ClientMeta) -> Swift.Bool
-    public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: Swift.Encoder) throws
+    public static func == (a: EnefitsSDK.Session.ClientMeta, b: EnefitsSDK.Session.ClientMeta) -> Swift.Bool
   }
   public struct WalletInfo : Swift.Codable, Swift.Equatable {
     public let approved: Swift.Bool
@@ -1027,14 +1028,14 @@ public struct Session : Swift.Codable {
     public let peerMeta: EnefitsSDK.Session.ClientMeta
     public init(approved: Swift.Bool, accounts: [Swift.String], chainId: Swift.Int, peerId: Swift.String, peerMeta: EnefitsSDK.Session.ClientMeta)
     public func with(approved: Swift.Bool) -> EnefitsSDK.Session.WalletInfo
-    public static func == (a: EnefitsSDK.Session.WalletInfo, b: EnefitsSDK.Session.WalletInfo) -> Swift.Bool
-    public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: Swift.Encoder) throws
+    public static func == (a: EnefitsSDK.Session.WalletInfo, b: EnefitsSDK.Session.WalletInfo) -> Swift.Bool
   }
-  public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
-extension Swift.UInt64 {
+extension UInt64 {
   @_specialize(exported: false, kind: full, where T == Swift.ArraySlice<Swift.UInt8>)
   @inlinable internal init<T>(bytes: T, fromIndex index: T.Index) where T : Swift.Collection, T.Element == Swift.UInt8, T.Index == Swift.Int {
     if bytes.isEmpty {
@@ -1056,7 +1057,7 @@ extension Swift.UInt64 {
     self = val0 | val1 | val2 | val3 | val4 | val5 | val6 | val7
   }
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public mutating func subtractReportingOverflow(_ b: EnefitsSDK.CS.BigUInt, shiftedBy shift: Swift.Int = 0) -> Swift.Bool
   public func subtractingReportingOverflow(_ other: EnefitsSDK.CS.BigUInt, shiftedBy shift: Swift.Int) -> (partialValue: EnefitsSDK.CS.BigUInt, overflow: Swift.Bool)
   public func subtractingReportingOverflow(_ other: EnefitsSDK.CS.BigUInt) -> (partialValue: EnefitsSDK.CS.BigUInt, overflow: Swift.Bool)
@@ -1066,30 +1067,30 @@ extension EnefitsSDK.CS.BigUInt {
   public static func - (a: EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
   public static func -= (a: inout EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt)
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public mutating func negate()
   public static func - (a: EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public static func -= (a: inout EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt)
 }
 @_inheritsConvenienceInitializers final public class CBCMAC : EnefitsSDK.CMAC {
   override final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
-  override public init(key: Swift.Array<Swift.UInt8>) throws
   @objc deinit
+  override public init(key: Swift.Array<Swift.UInt8>) throws
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public func squareRoot() -> EnefitsSDK.CS.BigUInt
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public func squareRoot() -> EnefitsSDK.CS.BigInt
 }
 final public class Rabbit {
   public enum Error : Swift.Error {
     case invalidKeyOrInitializationVector
     public static func == (a: EnefitsSDK.Rabbit.Error, b: EnefitsSDK.Rabbit.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public static let ivSize: Swift.Int
   public static let keySize: Swift.Int
@@ -1101,7 +1102,7 @@ final public class Rabbit {
   public init(key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>?) throws
   @objc deinit
 }
-extension EnefitsSDK.Rabbit : EnefitsSDK.Cipher {
+extension Rabbit : EnefitsSDK.Cipher {
   final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
   final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
 }
@@ -1130,7 +1131,7 @@ final public class SHA1 {
   final internal func process(block chunk: Swift.ArraySlice<Swift.UInt8>, currentHash hh: inout Swift.ContiguousArray<Swift.UInt32>)
   @objc deinit
 }
-extension EnefitsSDK.SHA1 : EnefitsSDK.Updatable {
+extension SHA1 : EnefitsSDK.Updatable {
   @discardableResult
   @inlinable final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8> {
     self.accumulated += bytes
@@ -1176,21 +1177,21 @@ extension EnefitsSDK.SHA1 : EnefitsSDK.Updatable {
     return result
   }
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public func power(_ exponent: Swift.Int) -> EnefitsSDK.CS.BigUInt
   public func power(_ exponent: EnefitsSDK.CS.BigUInt, modulus: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public func power(_ exponent: Swift.Int) -> EnefitsSDK.CS.BigInt
   public func power(_ exponent: EnefitsSDK.CS.BigInt, modulus: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   prefix public static func ~ (a: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
   public static func |= (a: inout EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt)
   public static func &= (a: inout EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt)
   public static func ^= (a: inout EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt)
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   prefix public static func ~ (x: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public static func & (lhs: inout EnefitsSDK.CS.BigInt, rhs: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public static func | (lhs: inout EnefitsSDK.CS.BigInt, rhs: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
@@ -1199,24 +1200,24 @@ extension EnefitsSDK.CS.BigInt {
   public static func |= (lhs: inout EnefitsSDK.CS.BigInt, rhs: EnefitsSDK.CS.BigInt)
   public static func ^= (lhs: inout EnefitsSDK.CS.BigInt, rhs: EnefitsSDK.CS.BigInt)
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public func isStrongProbablePrime(_ base: EnefitsSDK.CS.BigUInt) -> Swift.Bool
   public func isPrime(rounds: Swift.Int = 10) -> Swift.Bool
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public func isStrongProbablePrime(_ base: EnefitsSDK.CS.BigInt) -> Swift.Bool
   public func isPrime(rounds: Swift.Int = 10) -> Swift.Bool
 }
-extension Swift.String {
+extension String {
   public func decryptBase64ToString(cipher: EnefitsSDK.Cipher) throws -> Swift.String
   public func decryptBase64(cipher: EnefitsSDK.Cipher) throws -> Swift.Array<Swift.UInt8>
 }
 public protocol Updatable {
   mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool) throws -> Swift.Array<Swift.UInt8>
-  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
 }
-extension EnefitsSDK.Updatable {
-  @inlinable public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
+extension Updatable {
+  @inlinable public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
     let processed = try update(withBytes: bytes, isLast: isLast)
     if !processed.isEmpty {
       output(processed)
@@ -1228,7 +1229,7 @@ extension EnefitsSDK.Updatable {
   @inlinable public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8> {
     try self.update(withBytes: bytes.slice, isLast: isLast)
   }
-  @inlinable public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
+  @inlinable public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
     try self.update(withBytes: bytes.slice, isLast: isLast, output: output)
   }
   @inlinable public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8> {
@@ -1240,13 +1241,13 @@ extension EnefitsSDK.Updatable {
   @inlinable public mutating func finish() throws -> Swift.Array<Swift.UInt8> {
     try self.update(withBytes: [], isLast: true)
   }
-  @inlinable public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
+  @inlinable public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
     let processed = try update(withBytes: bytes, isLast: true)
     if !processed.isEmpty {
       output(processed)
     }
   }
-  @inlinable public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
+  @inlinable public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>, output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
     try self.finish(withBytes: bytes.slice, output: output)
   }
   @inlinable public mutating func finish(output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws {
@@ -1268,7 +1269,7 @@ public protocol Logger {
   public static var shared: EnefitsSDK.Logger
   @objc deinit
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public static func randomInteger<RNG>(withMaximumWidth width: Swift.Int, using generator: inout RNG) -> EnefitsSDK.CS.BigUInt where RNG : Swift.RandomNumberGenerator
   public static func randomInteger(withMaximumWidth width: Swift.Int) -> EnefitsSDK.CS.BigUInt
   public static func randomInteger<RNG>(withExactWidth width: Swift.Int, using generator: inout RNG) -> EnefitsSDK.CS.BigUInt where RNG : Swift.RandomNumberGenerator
@@ -1276,21 +1277,21 @@ extension EnefitsSDK.CS.BigUInt {
   public static func randomInteger<RNG>(lessThan limit: EnefitsSDK.CS.BigUInt, using generator: inout RNG) -> EnefitsSDK.CS.BigUInt where RNG : Swift.RandomNumberGenerator
   public static func randomInteger(lessThan limit: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
 }
-extension EnefitsSDK.AES {
+extension AES {
   convenience public init(key: Swift.String, iv: Swift.String, padding: EnefitsSDK.Padding = .pkcs7) throws
 }
-extension EnefitsSDK.ChaCha20 {
+extension ChaCha20 {
   convenience public init(key: Swift.String, iv: Swift.String) throws
 }
-extension EnefitsSDK.CS.BigInt : Swift.Codable {
+extension CS.BigInt : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension EnefitsSDK.CS.BigUInt : Swift.Codable {
+extension CS.BigUInt : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension EnefitsSDK.Blowfish {
+extension Blowfish {
   convenience public init(key: Swift.String, iv: Swift.String, padding: EnefitsSDK.Padding = .pkcs7) throws
 }
 public protocol Authenticator {
@@ -1303,10 +1304,10 @@ open class WalletConnect {
     case tryingToDisconnectInactiveSession
     case missingWalletInfoInSession
     public static func == (a: EnefitsSDK.WalletConnect.WalletConnectError, b: EnefitsSDK.WalletConnect.WalletConnectError) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   open func connect(to url: EnefitsSDK.WCURL) throws
   open func reconnect(to session: EnefitsSDK.Session) throws
@@ -1318,10 +1319,10 @@ final public class RSA {
   public enum Error : Swift.Error {
     case noPrivateKey
     public static func == (a: EnefitsSDK.RSA.Error, b: EnefitsSDK.RSA.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   final public let n: EnefitsSDK.BigUInteger
   final public let e: EnefitsSDK.BigUInteger
@@ -1332,7 +1333,7 @@ final public class RSA {
   convenience public init(keySize: Swift.Int)
   @objc deinit
 }
-extension EnefitsSDK.RSA : EnefitsSDK.Cipher {
+extension RSA : EnefitsSDK.Cipher {
   @inlinable final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8> {
     // Calculate encrypted data
     return BigUInteger(Data(bytes)).power(e, modulus: n).serialize().bytes
@@ -1347,10 +1348,10 @@ extension EnefitsSDK.RSA : EnefitsSDK.Cipher {
     return BigUInteger(Data(bytes)).power(d, modulus: n).serialize().bytes
   }
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public static func generatePrime(_ width: Swift.Int) -> EnefitsSDK.BigUInteger
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public mutating func multiply(byWord y: EnefitsSDK.CS.BigUInt.Word)
   public func multiplied(byWord y: EnefitsSDK.CS.BigUInt.Word) -> EnefitsSDK.CS.BigUInt
   public mutating func multiplyAndAdd(_ x: EnefitsSDK.CS.BigUInt, _ y: EnefitsSDK.CS.BigUInt.Word, shiftedBy shift: Swift.Int = 0)
@@ -1359,17 +1360,17 @@ extension EnefitsSDK.CS.BigUInt {
   public static func * (x: EnefitsSDK.CS.BigUInt, y: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
   public static func *= (a: inout EnefitsSDK.CS.BigUInt, b: EnefitsSDK.CS.BigUInt)
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public static func * (a: EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public static func *= (a: inout EnefitsSDK.CS.BigInt, b: EnefitsSDK.CS.BigInt)
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public init?<T>(exactly source: T) where T : Swift.BinaryInteger
   public init<T>(_ source: T) where T : Swift.BinaryInteger
   public init<T>(truncatingIfNeeded source: T) where T : Swift.BinaryInteger
   public init<T>(clamping source: T) where T : Swift.BinaryInteger
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public init()
   public init(_ integer: EnefitsSDK.CS.BigUInt)
   public init<T>(_ source: T) where T : Swift.BinaryInteger
@@ -1377,21 +1378,21 @@ extension EnefitsSDK.CS.BigInt {
   public init<T>(clamping source: T) where T : Swift.BinaryInteger
   public init<T>(truncatingIfNeeded source: T) where T : Swift.BinaryInteger
 }
-extension EnefitsSDK.CS.BigUInt : Swift.ExpressibleByIntegerLiteral {
+extension CS.BigUInt : Swift.ExpressibleByIntegerLiteral {
   public init(integerLiteral value: Swift.UInt64)
   public typealias IntegerLiteralType = Swift.UInt64
 }
-extension EnefitsSDK.CS.BigInt : Swift.ExpressibleByIntegerLiteral {
+extension CS.BigInt : Swift.ExpressibleByIntegerLiteral {
   public init(integerLiteral value: Swift.Int64)
   public typealias IntegerLiteralType = Swift.Int64
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public static func >>= <Other>(lhs: inout EnefitsSDK.CS.BigUInt, rhs: Other) where Other : Swift.BinaryInteger
   public static func <<= <Other>(lhs: inout EnefitsSDK.CS.BigUInt, rhs: Other) where Other : Swift.BinaryInteger
   public static func >> <Other>(lhs: EnefitsSDK.CS.BigUInt, rhs: Other) -> EnefitsSDK.CS.BigUInt where Other : Swift.BinaryInteger
   public static func << <Other>(lhs: EnefitsSDK.CS.BigUInt, rhs: Other) -> EnefitsSDK.CS.BigUInt where Other : Swift.BinaryInteger
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public static func &<< (left: EnefitsSDK.CS.BigInt, right: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public static func &<<= (left: inout EnefitsSDK.CS.BigInt, right: EnefitsSDK.CS.BigInt)
   public static func &>> (left: EnefitsSDK.CS.BigInt, right: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
@@ -1429,21 +1430,21 @@ public enum RequestError : Swift.Error {
   case parameterPositionOutOfBounds
   case namedParametersDoNotExist
   public static func == (a: EnefitsSDK.RequestError, b: EnefitsSDK.RequestError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 public typealias Method = Swift.String
 public protocol RequestID {
 }
-extension Swift.String : EnefitsSDK.RequestID {
+extension String : EnefitsSDK.RequestID {
 }
-extension Swift.Int : EnefitsSDK.RequestID {
+extension Int : EnefitsSDK.RequestID {
 }
-extension Swift.Double : EnefitsSDK.RequestID {
+extension Double : EnefitsSDK.RequestID {
 }
-extension Swift.FixedWidthInteger {
+extension FixedWidthInteger {
   @inlinable internal func bytes(totalBytes: Swift.Int = MemoryLayout<Self>.size) -> Swift.Array<Swift.UInt8> {
     arrayOfBytes(value: self.littleEndian, length: totalBytes)
     // TODO: adjust bytes order
@@ -1455,40 +1456,40 @@ public class CMAC : EnefitsSDK.Authenticator {
   public enum Error : Swift.Error {
     case wrongKeyLength
     public static func == (a: EnefitsSDK.CMAC.Error, b: EnefitsSDK.CMAC.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public init(key: Swift.Array<Swift.UInt8>) throws
   public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
   public func authenticate(_ bytes: Swift.Array<Swift.UInt8>, cipher: EnefitsSDK.Cipher) throws -> Swift.Array<Swift.UInt8>
   @objc deinit
 }
-extension EnefitsSDK.CS.BigUInt : Swift.Strideable {
+extension CS.BigUInt : Swift.Strideable {
   public typealias Stride = EnefitsSDK.CS.BigInt
   public func advanced(by n: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigUInt
   public func distance(to other: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigInt
 }
-extension EnefitsSDK.CS.BigInt : Swift.Strideable {
+extension CS.BigInt : Swift.Strideable {
   public typealias Stride = EnefitsSDK.CS.BigInt
   public func advanced(by n: EnefitsSDK.CS.BigInt.Stride) -> EnefitsSDK.CS.BigInt
   public func distance(to other: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt.Stride
 }
-extension EnefitsSDK.Rabbit {
+extension Rabbit {
   convenience public init(key: Swift.String) throws
   convenience public init(key: Swift.String, iv: Swift.String) throws
 }
 public enum Bit : Swift.Int {
   case zero
   case one
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
 }
-extension EnefitsSDK.Bit {
+extension Bit {
   @inlinable internal func inverted() -> EnefitsSDK.Bit {
     self == .zero ? .one : .zero
   }
@@ -1617,7 +1618,7 @@ final public class SHA2 {
   final internal func process32(block chunk: Swift.ArraySlice<Swift.UInt8>, currentHash hh: inout Swift.Array<Swift.UInt32>)
   @objc deinit
 }
-extension EnefitsSDK.SHA2 : EnefitsSDK.Updatable {
+extension SHA2 : EnefitsSDK.Updatable {
   @inlinable final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8> {
     self.accumulated += bytes
 
@@ -1717,55 +1718,55 @@ public enum ResponseError : Swift.Int, Swift.Error {
   public var message: Swift.String {
     get
   }
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public init?<S>(_ text: S, radix: Swift.Int = 10) where S : Swift.StringProtocol
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public init?<S>(_ text: S, radix: Swift.Int = 10) where S : Swift.StringProtocol
 }
-extension Swift.String {
+extension String {
   public init(_ v: EnefitsSDK.CS.BigUInt)
   public init(_ v: EnefitsSDK.CS.BigUInt, radix: Swift.Int, uppercase: Swift.Bool = false)
   public init(_ value: EnefitsSDK.CS.BigInt, radix: Swift.Int = 10, uppercase: Swift.Bool = false)
 }
-extension EnefitsSDK.CS.BigUInt : Swift.ExpressibleByStringLiteral {
+extension CS.BigUInt : Swift.ExpressibleByStringLiteral {
   public init(unicodeScalarLiteral value: Swift.UnicodeScalar)
   public init(extendedGraphemeClusterLiteral value: Swift.String)
   public init(stringLiteral value: Swift.StringLiteralType)
-  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.UnicodeScalar
 }
-extension EnefitsSDK.CS.BigInt : Swift.ExpressibleByStringLiteral {
+extension CS.BigInt : Swift.ExpressibleByStringLiteral {
   public init(unicodeScalarLiteral value: Swift.UnicodeScalar)
   public init(extendedGraphemeClusterLiteral value: Swift.String)
   public init(stringLiteral value: Swift.StringLiteralType)
-  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.UnicodeScalar
 }
-extension EnefitsSDK.CS.BigUInt : Swift.CustomStringConvertible {
+extension CS.BigUInt : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
 }
-extension EnefitsSDK.CS.BigInt : Swift.CustomStringConvertible {
+extension CS.BigInt : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
 }
-extension EnefitsSDK.CS.BigUInt : Swift.CustomPlaygroundDisplayConvertible {
+extension CS.BigUInt : Swift.CustomPlaygroundDisplayConvertible {
   public var playgroundDescription: Any {
     get
   }
 }
-extension EnefitsSDK.CS.BigInt : Swift.CustomPlaygroundDisplayConvertible {
+extension CS.BigInt : Swift.CustomPlaygroundDisplayConvertible {
   public var playgroundDescription: Any {
     get
   }
@@ -1774,10 +1775,10 @@ public struct PCBC : EnefitsSDK.BlockMode {
   public enum Error : Swift.Error {
     case invalidInitializationVector
     public static func == (a: EnefitsSDK.PCBC.Error, b: EnefitsSDK.PCBC.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public let options: EnefitsSDK.BlockModeOption
   public let customBlockSize: Swift.Int?
@@ -1790,9 +1791,9 @@ public enum CS {
 }
 public protocol _UInt8Type {
 }
-extension Swift.UInt8 : EnefitsSDK._UInt8Type {
+extension UInt8 : EnefitsSDK._UInt8Type {
 }
-extension Swift.UInt8 {
+extension UInt8 {
   public func bits() -> [EnefitsSDK.Bit]
   public func bits() -> Swift.String
 }
@@ -1868,11 +1869,11 @@ public struct BlockModeOption : Swift.OptionSet {
   internal static let paddingRequired: EnefitsSDK.BlockModeOption
   @usableFromInline
   internal static let useEncryptToDecrypt: EnefitsSDK.BlockModeOption
-  public typealias ArrayLiteralElement = EnefitsSDK.BlockModeOption
   public typealias Element = EnefitsSDK.BlockModeOption
+  public typealias ArrayLiteralElement = EnefitsSDK.BlockModeOption
   public typealias RawValue = Swift.Int
 }
-extension Swift.Collection where Self.Element == Swift.UInt8, Self.Index == Swift.Int {
+extension Collection where Self.Element == Swift.UInt8, Self.Index == Swift.Int {
   @inlinable internal func toUInt32Array() -> Swift.Array<Swift.UInt32> {
     guard !isEmpty else {
       return []
@@ -1914,10 +1915,10 @@ public enum CipherError : Swift.Error {
   case encrypt
   case decrypt
   public static func == (a: EnefitsSDK.CipherError, b: EnefitsSDK.CipherError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 public protocol Cipher : AnyObject {
   var keySize: Swift.Int { get }
@@ -1926,15 +1927,15 @@ public protocol Cipher : AnyObject {
   func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
   func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
 }
-extension EnefitsSDK.Cipher {
+extension Cipher {
   public func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
   public func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public func greatestCommonDivisor(with b: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt
   public func inverse(_ modulus: EnefitsSDK.CS.BigUInt) -> EnefitsSDK.CS.BigUInt?
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public func greatestCommonDivisor(with b: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt
   public func inverse(_ modulus: EnefitsSDK.CS.BigInt) -> EnefitsSDK.CS.BigInt?
 }
@@ -1969,17 +1970,17 @@ public struct OFB : EnefitsSDK.BlockMode {
   public enum Error : Swift.Error {
     case invalidInitializationVector
     public static func == (a: EnefitsSDK.OFB.Error, b: EnefitsSDK.OFB.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public let options: EnefitsSDK.BlockModeOption
   public let customBlockSize: Swift.Int?
   public init(iv: Swift.Array<Swift.UInt8>)
   public func worker(blockSize: Swift.Int, cipherOperation: @escaping EnefitsSDK.CipherOperationOnBlock, encryptionOperation: @escaping EnefitsSDK.CipherOperationOnBlock) throws -> EnefitsSDK.CipherModeWorker
 }
-extension Swift.Array {
+extension Array {
   @inlinable internal init(reserveCapacity: Swift.Int) {
     self = Array<Element>()
     self.reserveCapacity(reserveCapacity)
@@ -1995,11 +1996,11 @@ extension Swift.Array {
   }
   }
 }
-extension Swift.Array where Element == Swift.UInt8 {
+extension Array where Element == Swift.UInt8 {
   public init(hex: Swift.String)
   public func toHexString() -> Swift.String
 }
-extension Swift.Array where Element == Swift.UInt8 {
+extension Array where Element == Swift.UInt8 {
   @available(*, deprecated)
   public func chunks(size chunksize: Swift.Int) -> Swift.Array<Swift.Array<Element>>
   public func md5() -> [Element]
@@ -2024,17 +2025,17 @@ final public class Blowfish {
     case invalidInitializationVector
     case invalidBlockMode
     public static func == (a: EnefitsSDK.Blowfish.Error, b: EnefitsSDK.Blowfish.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public static let blockSize: Swift.Int
   final public let keySize: Swift.Int
   public init(key: Swift.Array<Swift.UInt8>, blockMode: EnefitsSDK.BlockMode = CBC(iv: Array<UInt8>(repeating: 0, count: Blowfish.blockSize)), padding: EnefitsSDK.Padding) throws
   @objc deinit
 }
-extension EnefitsSDK.Blowfish : EnefitsSDK.Cipher {
+extension Blowfish : EnefitsSDK.Cipher {
   final public func encrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
   final public func decrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
 }
@@ -2043,10 +2044,10 @@ final public class HMAC : EnefitsSDK.Authenticator {
     case authenticateError
     case invalidInput
     public static func == (a: EnefitsSDK.HMAC.Error, b: EnefitsSDK.HMAC.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Variant {
     case md5
@@ -2060,20 +2061,20 @@ final public class HMAC : EnefitsSDK.Authenticator {
   final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
   @objc deinit
 }
-extension Swift.Array where Element == Swift.UInt8 {
+extension Array where Element == Swift.UInt8 {
   public func toBase64() -> Swift.String
   public init(base64: Swift.String)
 }
-extension EnefitsSDK.HMAC {
+extension HMAC {
   convenience public init(key: Swift.String, variant: EnefitsSDK.HMAC.Variant = .md5) throws
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public subscript(bitAt index: Swift.Int) -> Swift.Bool {
     get
     set
   }
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public var bitWidth: Swift.Int {
     get
   }
@@ -2084,7 +2085,7 @@ extension EnefitsSDK.CS.BigUInt {
     get
   }
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public var bitWidth: Swift.Int {
     get
   }
@@ -2092,7 +2093,7 @@ extension EnefitsSDK.CS.BigInt {
     get
   }
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public struct Words : Swift.RandomAccessCollection {
     public var startIndex: Swift.Int {
       get
@@ -2105,16 +2106,16 @@ extension EnefitsSDK.CS.BigUInt {
     }
     public typealias Element = EnefitsSDK.CS.BigUInt.Word
     public typealias Index = Swift.Int
-    public typealias Indices = Swift.Range<Swift.Int>
     public typealias Iterator = Swift.IndexingIterator<EnefitsSDK.CS.BigUInt.Words>
     public typealias SubSequence = Swift.Slice<EnefitsSDK.CS.BigUInt.Words>
+    public typealias Indices = Swift.Range<Swift.Int>
   }
   public var words: EnefitsSDK.CS.BigUInt.Words {
     get
   }
   public init<Words>(words: Words) where Words : Swift.Sequence, Words.Element == EnefitsSDK.CS.BigUInt.Word
 }
-extension EnefitsSDK.CS.BigInt {
+extension CS.BigInt {
   public struct Words : Swift.RandomAccessCollection {
     public typealias Indices = Swift.CountableRange<Swift.Int>
     public var count: Swift.Int {
@@ -2147,20 +2148,20 @@ final public class GCM : EnefitsSDK.BlockMode {
     case combined
     case detached
     public static func == (a: EnefitsSDK.GCM.Mode, b: EnefitsSDK.GCM.Mode) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   final public let options: EnefitsSDK.BlockModeOption
   public enum Error : Swift.Error {
     case invalidInitializationVector
     case fail
     public static func == (a: EnefitsSDK.GCM.Error, b: EnefitsSDK.GCM.Error) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
+    public func hash(into hasher: inout Swift.Hasher)
   }
   final public let customBlockSize: Swift.Int?
   final public var authenticationTag: Swift.Array<Swift.UInt8>?
@@ -2209,7 +2210,7 @@ final public class Checksum {
   }
   @objc deinit
 }
-extension EnefitsSDK.Checksum {
+extension Checksum {
   @inlinable public static func crc32(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32 {
     Checksum().crc32(message, seed: seed, reflect: reflect)
   }
@@ -2220,7 +2221,7 @@ extension EnefitsSDK.Checksum {
     Checksum().crc16(message, seed: seed)
   }
 }
-extension EnefitsSDK.CS {
+extension CS {
   public struct BigUInt : Swift.UnsignedInteger {
     public typealias Word = Swift.UInt
     public init()
@@ -2228,7 +2229,7 @@ extension EnefitsSDK.CS {
     public typealias Magnitude = EnefitsSDK.CS.BigUInt
   }
 }
-extension EnefitsSDK.CS.BigUInt {
+extension CS.BigUInt {
   public static var isSigned: Swift.Bool {
     get
   }
@@ -2237,7 +2238,7 @@ extension EnefitsSDK.CS.BigUInt {
 public protocol Cryptor {
   mutating func seek(to: Swift.Int) throws
 }
-extension Swift.String {
+extension String {
   @inlinable public var bytes: Swift.Array<Swift.UInt8> {
     get {
     data(using: String.Encoding.utf8, allowLossyConversion: true)?.bytes ?? Array(utf8)
@@ -2286,7 +2287,7 @@ extension Swift.String {
 @usableFromInline
 internal struct BatchedCollectionIndex<Base> where Base : Swift.Collection {
 }
-extension EnefitsSDK.BatchedCollectionIndex : Swift.Comparable {
+extension BatchedCollectionIndex : Swift.Comparable {
   @usableFromInline
   internal static func == <Base>(lhs: EnefitsSDK.BatchedCollectionIndex<Base>, rhs: EnefitsSDK.BatchedCollectionIndex<Base>) -> Swift.Bool where Base : Swift.Collection
   @usableFromInline
@@ -2315,27 +2316,27 @@ internal struct BatchedCollection<Base> : Swift.Collection where Base : Swift.Co
   @usableFromInline
   internal typealias Element = Base.SubSequence
   @usableFromInline
-  internal typealias Indices = Swift.DefaultIndices<EnefitsSDK.BatchedCollection<Base>>
-  @usableFromInline
   internal typealias Iterator = Swift.IndexingIterator<EnefitsSDK.BatchedCollection<Base>>
   @usableFromInline
   internal typealias SubSequence = Swift.Slice<EnefitsSDK.BatchedCollection<Base>>
+  @usableFromInline
+  internal typealias Indices = Swift.DefaultIndices<EnefitsSDK.BatchedCollection<Base>>
 }
-extension Swift.Collection {
+extension Collection {
   @inlinable internal func batched(by size: Swift.Int) -> EnefitsSDK.BatchedCollection<Self> {
     BatchedCollection(base: self, size: size)
   }
 }
-extension EnefitsSDK.PKCS5 {
+extension PKCS5 {
   public struct PBKDF1 {
     public enum Error : Swift.Error {
       case invalidInput
       case derivedKeyTooLong
       public static func == (a: EnefitsSDK.PKCS5.PBKDF1.Error, b: EnefitsSDK.PKCS5.PBKDF1.Error) -> Swift.Bool
-      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
+      public func hash(into hasher: inout Swift.Hasher)
     }
     public enum Variant {
       case md5, sha1
@@ -2346,10 +2347,10 @@ extension EnefitsSDK.PKCS5 {
       @usableFromInline
       internal func calculateHash(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
       public static func == (a: EnefitsSDK.PKCS5.PBKDF1.Variant, b: EnefitsSDK.PKCS5.PBKDF1.Variant) -> Swift.Bool
-      public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
       }
+      public func hash(into hasher: inout Swift.Hasher)
     }
     @usableFromInline
     internal let iterations: Swift.Int
@@ -2424,7 +2425,6 @@ extension EnefitsSDK.Bit : Swift.Hashable {}
 extension EnefitsSDK.Bit : Swift.RawRepresentable {}
 extension EnefitsSDK.SHA2.Variant : Swift.Equatable {}
 extension EnefitsSDK.SHA2.Variant : Swift.Hashable {}
-extension EnefitsSDK.SHA2.Variant : Swift.Sendable {}
 extension EnefitsSDK.ResponseError : Swift.Equatable {}
 extension EnefitsSDK.ResponseError : Swift.Hashable {}
 extension EnefitsSDK.ResponseError : Swift.RawRepresentable {}

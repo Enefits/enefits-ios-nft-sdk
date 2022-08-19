@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/EnefitsSDK-Swift.h</key>
 		<data>
-		AP6hEuGA4Uj3AoVQhMKs5e+gi88=
+		rMrjdJIAI6XDxzia4GE2Mzsi1lI=
 		</data>
 		<key>Headers/EnefitsSDK.h</key>
 		<data>
@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		LReWODmeVhSr50LpBQNckgUOpXI=
+		xNgVgtkWKY0QJbq5WeaMj9qyVZs=
 		</data>
 		<key>Main.storyboardc/EnefitsConnectViewController.nib</key>
 		<data>
-		scSxLpvmZOFRull7P5myMe5fHEg=
+		Lxt5k8Vfwr/YROdB0RAK48wTwVM=
 		</data>
 		<key>Main.storyboardc/Info.plist</key>
 		<data>
@@ -26,31 +26,55 @@
 		</data>
 		<key>Main.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		kBQLJLeYWoZNAR3e2VrgtktSwnw=
+		845ebXCTppAnbPL7pMnqiQ5X0lM=
 		</data>
 		<key>Modules/EnefitsSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		CFCsuBOXsDAGZUrCAt5+jgXwUA4=
+		Y+x+DVsgOXLRAJM7FwToFJS4EGU=
 		</data>
 		<key>Modules/EnefitsSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		LnPajfRq7/IjyUxlVtYYHOcQ5gA=
+		i9oL0XW9nikmUO+1obvdGl/xI+s=
 		</data>
 		<key>Modules/EnefitsSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		bvWhAHy5YuU7vaBbeJ7cq6GVnvI=
+		rRVzPmRDD8iHcZua/ZrTcCBxo6c=
+		</data>
+		<key>Modules/EnefitsSDK.swiftmodule/arm64.swiftdoc</key>
+		<data>
+		Y+x+DVsgOXLRAJM7FwToFJS4EGU=
+		</data>
+		<key>Modules/EnefitsSDK.swiftmodule/arm64.swiftinterface</key>
+		<data>
+		i9oL0XW9nikmUO+1obvdGl/xI+s=
+		</data>
+		<key>Modules/EnefitsSDK.swiftmodule/arm64.swiftmodule</key>
+		<data>
+		rRVzPmRDD8iHcZua/ZrTcCBxo6c=
 		</data>
 		<key>Modules/EnefitsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		2ypPqOCX6fDiMNYcoW7nG7gXjSo=
+		oIcuQEpkuRGp7wFq7khMzSEwpDE=
 		</data>
 		<key>Modules/EnefitsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		dYstVYefdjQcdxEoxf0QRtCUyDQ=
+		U7/7mn8GV+8SqrmXQcs4nC8Fub4=
 		</data>
 		<key>Modules/EnefitsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		CwNS0sJh9ru89yy/t27I2YUlsz8=
+		NG7u9kgMwCAbbSdTvO+bW/ajucw=
+		</data>
+		<key>Modules/EnefitsSDK.swiftmodule/x86_64.swiftdoc</key>
+		<data>
+		oIcuQEpkuRGp7wFq7khMzSEwpDE=
+		</data>
+		<key>Modules/EnefitsSDK.swiftmodule/x86_64.swiftinterface</key>
+		<data>
+		U7/7mn8GV+8SqrmXQcs4nC8Fub4=
+		</data>
+		<key>Modules/EnefitsSDK.swiftmodule/x86_64.swiftmodule</key>
+		<data>
+		NG7u9kgMwCAbbSdTvO+bW/ajucw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -58,7 +82,7 @@
 		</data>
 		<key>WalletListTableViewCell.nib</key>
 		<data>
-		czh8Ph77SPFjDjO6fVXRHoVB95k=
+		PH6H2GkoMapNn9ECVGT7RR8Aytk=
 		</data>
 		<key>close.png</key>
 		<data>
@@ -71,7 +95,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zuX29ALqfP2mh/5N+zpbmhr5q3S78NQeZSJ7qIYvJvE=
+			rAhE5MaIMNj6QKirVGaoBkaOSSD0mCtFbT68FDmCt14=
 			</data>
 		</dict>
 		<key>Headers/EnefitsSDK.h</key>
@@ -85,7 +109,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NqY4opTkAlEXbhqXPmq1x5ArOMZcZRBZ7300Rl+nHnc=
+			8jLmYo9Hw9wBfTjH2/I/F8IPlxfrAEoZsWQ1atg+NXc=
 			</data>
 		</dict>
 		<key>Main.storyboardc/Info.plist</key>
@@ -99,49 +123,91 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mXezeepJf0F/okFqKhTA6ZWHFc7zLoEEyl4hZDUgK48=
+			cw+cviC/qdT8cFhVOzeDdwjdgOiaPENmY8bm+kMfO+w=
 			</data>
 		</dict>
 		<key>Modules/EnefitsSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1qXdUFJyDQWmOHpt82rRrydKEhW/4KdOaXE2tKXY4Po=
+			KbXct6lsElaf60R7eJ/m5brdIfIhxVP3cMdEkkz6g9E=
 			</data>
 		</dict>
 		<key>Modules/EnefitsSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZyNwWIVZyRF+kuVZUQDyHQMWWWkEKdStt5wrA/grxRA=
+			YyM7Yw7oymxOrPCcKtD2nnjvZKwT1BGZbMQECLgDARA=
 			</data>
 		</dict>
 		<key>Modules/EnefitsSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LNMqdQ+TNAI5VSotQrslQDEoYtQPqbFmxz1pkWAEeI8=
+			vHsuBDVfhWdjUymkBuGssc8tkmEkq8sNtiQI3BliHFM=
+			</data>
+		</dict>
+		<key>Modules/EnefitsSDK.swiftmodule/arm64.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KbXct6lsElaf60R7eJ/m5brdIfIhxVP3cMdEkkz6g9E=
+			</data>
+		</dict>
+		<key>Modules/EnefitsSDK.swiftmodule/arm64.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YyM7Yw7oymxOrPCcKtD2nnjvZKwT1BGZbMQECLgDARA=
+			</data>
+		</dict>
+		<key>Modules/EnefitsSDK.swiftmodule/arm64.swiftmodule</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vHsuBDVfhWdjUymkBuGssc8tkmEkq8sNtiQI3BliHFM=
 			</data>
 		</dict>
 		<key>Modules/EnefitsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pByUsAX1A92u8OrIgtd8irsq3r7IbkvRg7uaz8OmxsQ=
+			o3Lt6G0QNy1d8vUtHUdcpvCqee38RUMZ+/DYve31Utw=
 			</data>
 		</dict>
 		<key>Modules/EnefitsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VKmKLfQkrlFvTKWgnuYu7NMgz9A9ljQ4NG5jtQ4XsPA=
+			zCrWG+I1bMAyT5uKn/V1/D2fzl2aYgzpCJhxVwz4QKo=
 			</data>
 		</dict>
 		<key>Modules/EnefitsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j/CsUBZyxikdxcJGklbWkqlGvMiyiRFi1UF/sKKdZI4=
+			HDAZ2bLN9x1PZDWPVkYkispTmbCMmAtU+hGvQRfPTvU=
+			</data>
+		</dict>
+		<key>Modules/EnefitsSDK.swiftmodule/x86_64.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			o3Lt6G0QNy1d8vUtHUdcpvCqee38RUMZ+/DYve31Utw=
+			</data>
+		</dict>
+		<key>Modules/EnefitsSDK.swiftmodule/x86_64.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zCrWG+I1bMAyT5uKn/V1/D2fzl2aYgzpCJhxVwz4QKo=
+			</data>
+		</dict>
+		<key>Modules/EnefitsSDK.swiftmodule/x86_64.swiftmodule</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HDAZ2bLN9x1PZDWPVkYkispTmbCMmAtU+hGvQRfPTvU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -155,7 +221,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nHPaY2A9mNj88zay1AylUus8qR+VJPYA3cSUO5PIDRs=
+			i11ImpWToTKGo2rtxuALE2mau4ZyQv3qavr4hG+4rp0=
 			</data>
 		</dict>
 		<key>close.png</key>
