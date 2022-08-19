@@ -12,11 +12,11 @@ We only show this once so if you lose this API Key, you’ll have to re-generate
 
 ##Run The Demo
 
-* To run a live demo, visit https://bajaar.beanstalkapp.com/enefits-mobile-sdk/browse/git/ios and provide your own API key where requested.
+* To run a live demo, visit https://github.com/Enefits/enefits-ios-nft-sdk/tree/main/EnefitsSample and provide your own API key where requested.
 
 ##Download The SDK
 
-* The Enefits iOS SDK can be downloaded from --> https://bajaar.beanstalkapp.com/enefits-mobile-sdk/browse/git/ios
+* The Enefits iOS SDK can be downloaded from --> https://github.com/Enefits/enefits-ios-nft-sdk/tree/main/EnefitsSDK.xcframework
 
 
 ##Installation
