@@ -1,0 +1,11 @@
+framework module EnefitsSDK {
+  umbrella header "EnefitsSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module EnefitsSDK.Swift {
+    header "EnefitsSDK-Swift.h"
+    requires objc
+}

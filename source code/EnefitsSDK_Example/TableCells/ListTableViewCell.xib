@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListTableViewCell" rowHeight="100" id="KGk-i7-Jjw" customClass="ListTableViewCell" customModule="EnefitsSDK_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="339" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="339" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1 : Initiliaze the SDK" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFD-yY-3xg">
+                        <rect key="frame" x="34" y="20" width="271" height="16"/>
+                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="API Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LKY-Xn-v0D">
+                        <rect key="frame" x="20" y="48" width="299" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="46B-5i-Rb7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHO-3I-XD8">
+                        <rect key="frame" x="131" y="95" width="77" height="35"/>
+                        <color key="backgroundColor" red="0.3803921569" green="0.36470588240000001" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="PPd-fX-fxW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="14"/>
+                        <color key="tintColor" red="0.38039215686274508" green="0.36470588235294116" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="Initilize SDK"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LKY-Xn-v0D" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="LKg-Mf-P0i"/>
+                    <constraint firstItem="ZFD-yY-3xg" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="RYC-jy-6y1"/>
+                    <constraint firstAttribute="bottom" secondItem="rHO-3I-XD8" secondAttribute="bottom" constant="20" id="TGU-Wa-Qh5"/>
+                    <constraint firstItem="LKY-Xn-v0D" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="WHK-KF-5SU"/>
+                    <constraint firstItem="LKY-Xn-v0D" firstAttribute="top" secondItem="ZFD-yY-3xg" secondAttribute="bottom" constant="12" id="ZGZ-Nh-gVq"/>
+                    <constraint firstItem="ZFD-yY-3xg" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.8" id="ZUt-hk-W1g"/>
+                    <constraint firstItem="LKY-Xn-v0D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ela-pX-Zxy"/>
+                    <constraint firstItem="rHO-3I-XD8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="n0I-95-OZN"/>
+                    <constraint firstItem="ZFD-yY-3xg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="uK1-qR-Vxc"/>
+                    <constraint firstItem="rHO-3I-XD8" firstAttribute="top" secondItem="LKY-Xn-v0D" secondAttribute="bottom" constant="12" id="yi4-21-1Kd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="actionButton" destination="rHO-3I-XD8" id="ejx-jv-S94"/>
+                <outlet property="inputTextfield" destination="LKY-Xn-v0D" id="BEf-5G-nAf"/>
+                <outlet property="inputTextfieldBottomConstrain" destination="yi4-21-1Kd" id="x0w-oG-DhI"/>
+                <outlet property="inputTextfieldHeightConstrain" destination="46B-5i-Rb7" id="egB-up-K2B"/>
+                <outlet property="inputTextfieldTopConstrain" destination="ZGZ-Nh-gVq" id="xv7-Zy-axE"/>
+                <outlet property="titleLable" destination="ZFD-yY-3xg" id="L8d-eh-2UI"/>
+            </connections>
+            <point key="canvasLocation" x="151.44927536231884" y="181.80803571428569"/>
+        </tableViewCell>
+    </objects>
+</document>
